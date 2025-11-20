@@ -1,17 +1,20 @@
 def create_batch(request_id: str, prompt: str, temperature: float = 0.0) -> list:
 
     return {
-        "custom_id": request_id, 
+        "key": request_id,
         "request": {
-            "anthropic_version": "vertex-2023-10-16", 
-            "messages": [
+            "contents": [
                 {
-               "role": "user", 
-               "content": [
-                  {"type": "text", 
-                   "text": prompt
-                   }]
+                    "role": "user", 
+                    "parts": [
+                        {
+                            "text": prompt
+                        }
+                    ]
                 }
-            ], 
-            "max_tokens": 4096, 
-            "temperature": temperature}}
+            ],
+            "generationConfig": {
+                "temperature": temperature
+            }
+        }
+    }
