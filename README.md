@@ -104,7 +104,7 @@ python3 batch_inference.py
 - Run the Python code below to evaluate the regression model.
 
 ```python
-from evaluator import Evaluator
+from pipeline.evaluator import Evaluator
 
 df = pd.read_csv("data/grid.csv")
 eval = Evaluator(df=df,
