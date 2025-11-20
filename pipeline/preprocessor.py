@@ -22,7 +22,7 @@ class BatchCreator:
         self.target = target
 
         self.target_to_drop = "SOM" if target == "pH" else "pH"
-        self.output_file = f"data/batches/{target}_regression.jsonl"
+        self.output_file = f"data/batches/{target}_regression_gemini.jsonl"
 
     def preprocess(self) -> None:
 
@@ -63,7 +63,7 @@ class BatchCreator:
                 batch_id += 1
             fold_id += 1
         
-        json.dump(data_folds, open("data/folds/data.json", "w"))
+        json.dump(data_folds, open(f"data/folds/data_{self.target}.json", "w"))
     
     def save_batches_as_jsonl(self):
 
